@@ -1,23 +1,18 @@
-//Cada vez que se cliquea en el boton, llama a la funcion generateDomain y reemplaza el texto en el html
-window.onload = () => {
-	document.querySelector('#btn').addEventListener("click", () => {
-		document.querySelector('#domain').innerHTML = generateDomain();
-	});
+const PRONOUN = ['the','our','your','my'];
+const ADJ = ['great','big','incredible','impeccable'];
+const NOUN = ['investor', 'developer', 'kendoka','writer'];
+const EXT= ['.com','.es','.io','.net'];
 
-};
-
-//Genera un string random a partir de un array
-let generateDomain = () => {
-
-	let pronoun = ['the','our','your','my'];
-	let adj = ['great','big','incredible','impeccable'];
-	let noun = ['investor', 'developer', 'kendoka','writer'];
-	let ext= ['.com','.es','.io','.net'];
-
-	let pronounIndex = Math.floor(Math.random() * pronoun.length);
-	let adjIndex = Math.floor(Math.random() * adj.length);
-	let nounIndex = Math.floor(Math.random() * noun.length);
-	let extIndex = Math.floor(Math.random() * ext.length);
-
-	return pronoun[pronounIndex] + adj[adjIndex] + noun[nounIndex] + ext[extIndex];
-};
+function generateDomain (p1, p2, p3, p4) {
+    for(let a=0; a<p1.length; a++){
+        for(let b=0; b<p2.length; b++){
+            for(let c=0; c<p3.length; c++){
+            	for(let d=0; d<p4.length; d++){
+	                let dominio = p1[a] + p2[b] + p3[c] + p4[d];
+	                let elemento = document.querySelector('#domain');
+	 				elemento.innerHTML += '<li>' + dominio + '</li>';
+	            }
+            }
+        }
+    }
+}
