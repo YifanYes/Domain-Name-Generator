@@ -1,42 +1,33 @@
-const PRONOUNS = ['the','our','your','my'];
-const ADJS = ['great','big','incredible','impeccable','just'];
-const NOUNS = ['investor', 'lastOfUs','doit','malcom','italia','breathecode'];
-const EXTS= ['com','es','io','net','it','de'];
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script type="text/javascript" src="main.js"></script>
+    <title>Domain Name Generator</title>
+  </head>
 
-window.onload = () => {
-    let result = document.querySelector('#domain');
-    let listDomain = generateDomain();
-    for (const domain of listDomain){
-        console.log(domain);
-        result.innerHTML = result.innerHTML.concat('<li>',domain,'</li>');
-    }
-};
+  <body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 offset-md-4" style="display: flex; justify-content: center;">
+                <h1 style="margin: 1rem;">Domain Name Generator</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 offset-md-4" style="display: flex; justify-content: center;">
+                <button type="button" class="btn btn-dark" id="btn" style="margin: 1rem;">Get new domain</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 offset-md-4" style="display: flex; justify-content: center;">
+                <ul id="domain"></ul>
+            </div>
+        </div>
+    </div>
 
-function generateDomain () {
-    let domain = [];
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
+</html>
 
-    for(const pronoun of PRONOUNS){
-        for(const adj of ADJS){
-            for(const noun of NOUNS){
-            	for(const extension of EXTS){
-                    let firstPart = pronoun + noun;
-
-                    if (checkExtension(firstPart,extension)) {
-
-                        let auxList = [...firstPart];
-                        auxList.splice(firstPart.length - extension.length, 0 , '.');
-                        domain.push(auxList.join(''));
-                    } else {
-                        domain.push(firstPart + '.' + extension);
-                    }
-	            }
-            }
-        }
-    }
-
-    return domain;
-}
-
-const checkExtension = (domainFirstPart, extension) => {
-    return domainFirstPart.includes(extension, domainFirstPart.length - extension.length);
-};
