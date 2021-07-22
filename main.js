@@ -1,33 +1,19 @@
-<!DOCTYPE HTML>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script type="text/javascript" src="main.js"></script>
-    <title>Domain Name Generator</title>
-  </head>
+//Cada vez que se cliquea en el boton, llama a la funcion generateDomain y reemplaza el texto en el html
+const PRONOUN = ['the','our','your','my'];
+const ADJ = ['great','big','incredible','impeccable'];
+const NOUN = ['investor', 'developer', 'kendoka','writer'];
+const EXT= ['.com','.es','.io','.net'];
 
-  <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-4 offset-md-4" style="display: flex; justify-content: center;">
-                <h1 style="margin: 1rem;">Domain Name Generator</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 offset-md-4" style="display: flex; justify-content: center;">
-                <button type="button" class="btn btn-dark" id="btn" style="margin: 1rem;">Get new domain</button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 offset-md-4" style="display: flex; justify-content: center;">
-                <ul id="domain"></ul>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  </body>
-</html>
-
+function generateDomain (p1, p2, p3, p4) {
+    for(let a=0; a<p1.length; a++){
+        for(let b=0; b<p2.length; b++){
+            for(let c=0; c<p3.length; c++){
+            	for(let d=0; d<p4.length; d++){
+	                let dominio = p1[a] + p2[b] + p3[c] + p4[d];
+	                let elemento = document.querySelector('#domain');
+	 				elemento.innerHTML += '<li>' + dominio + '</li>';
+	            }
+            }
+        }
+    }
+}
